@@ -99,6 +99,12 @@ In the next steps, the machine learning models trained by using the features sel
 
 # 3. Top 3 Data Insights
 
+The Mind Map shows the main factors that can contribute to a client to get into churn.
+Both the mind map and the available data from the dataset will be the basis to create a hypothesis list.
+The hypothesis list serves as the guide for the Exploratory Data Analysis (EDA), which aims to better understand the general data and features properties, as well as to generate business insights.
+
+<img src="/img/DAILY_STORE_SALES_HYPOTESES.png" height="627" width="907">
+
 **Hypothesis 01:**
 
 **True/False.**
