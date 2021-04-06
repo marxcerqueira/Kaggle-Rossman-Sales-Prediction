@@ -4,9 +4,9 @@
 
 ## Introduction
 
-An end-to-end Data Science project with a regression adapted for time series as solution was created five machine learning models to forecast the sales. Predictions can be accessed by users through a bot from the smartphone app Telegram.
+An end-to-end Data Science project with a regression adapted for time series as solution was created four machine learning models to forecast the sales. Predictions can be accessed by users through a bot from the smartphone app Telegram.
 
-This repository contains the solution for this business problem (in portuguese): https://bit.ly/3ntCc6E
+This repository contains the solution for a Kaggle competition problem: https://www.kaggle.com/c/rossmann-store-sales
 
 This project is part of the "Data Science Community" (Comunidade DS), a study environment to promote, learn, discuss and execute Data Science projects. For more information, please visit (in portuguese): https://sejaumdatascientist.com/
 The goal of this Readme is to show the context of the problem, the steps taken to solve it, the main insights and the overall performance.
@@ -25,7 +25,7 @@ The project was developed based on the CRISP-DS (Cross-Industry Standard Process
 
 &nbsp; 
   <p align="center">
-    <img width="80%" alt="drawing" src="https://miro.medium.com/max/700/1*JYbymHifAk7aQ1pHm_IdMQ.png">
+    <img width="50%" alt="drawing" src="https://miro.medium.com/max/700/1*JYbymHifAk7aQ1pHm_IdMQ.png">
   </p>
   &nbsp; 
 
@@ -37,15 +37,14 @@ The project was developed based on the CRISP-DS (Cross-Industry Standard Process
 - [Introduction](#introduction)
 - [1. Business Problem](#1-business-problem)
 - [2. Solution Strategy](#2-solution-strategy)
-- [3. Feature Engineering](#3-feature-engineering)
-- [4. EDA Summary and Insights](#4-eda-summary-and-insights)
-- [5. Data Preparation and Feature Selection](#5-data-preparation-and-feature-selection)
-- [6. Machine Learning Modelling and Fine Tuning](#6-machine-learning-modelling-and-fine-tuning)
-- [7. Business Performance and Results](#7-business-performance-and-results)
-- [8. Next Steps](#8-next-steps)
-- [9. Lessons Learned](#9-lessons-learned)
-- [10. Conclusion](#10-conclusion)
-- [References](#references)
+- [3. Top 3 Data Insights](#3-top-3-data-insights)
+- [4. Machine Learning Model Applied](#4-machine-learning-model-applied)
+- [5. Machine Learning Model Performance](#5-machine-learning-model-performance)
+- [6. Business Results](#7-bussines-results)
+- [7. Conclusion](#8-conclusion)
+- [8. Lessons Learned](#9-lessons-learned)
+- [9. Next Steps to Improve](#10-next-steps-to-improve)
+- [10.References](#references)
 
 ---
 
@@ -144,6 +143,9 @@ The trained (cross-validated and fine tuned) model was also applied on a dataset
 
 
 # 9. Next Steps to Improve
+
+# 10. References 
+
 
 # LICENSE
 
