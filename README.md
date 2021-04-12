@@ -130,13 +130,12 @@ In the next steps, the machine learning models trained by using the features sel
 ## 4.1 Univariate Analysis
 The histograms below show us the distribution of all the numerical features (old and new features created after feature engineering).
 ![](/img/feat_histogram.png)
-<img src="/img/feat_histogram.png" height="350" width="500" align="middle">
 
 The mind map below shows us the main factors that can contribute to to predict the target variable Sales.
 Both the mind map and the available data from the dataset will be the basis to create a hypothesis list.
 The hypothesis list better suit us as a guide for the Exploratory Data Analysis (EDA), which aims to better understand the general data and features properties, and generate business insights as well.
 
-<img src="/img/DAILY_STORE_SALES_HYPOTESES.png" height="350" width="500" align="middle">
+![](/img/DAILY_STORE_SALES_HYPOTESES.png)
 
 * Highlights: 
   **All variables don't follow a normal distribution**
@@ -169,6 +168,10 @@ Bellow are the assumptions that I created as hypothesis to a better data undesta
 **Hypothesis 03:**
 
 **True/False.**
+
+**Hypothesis Summary**:
+
+![](/img/hypothesis_resume.png)
 
 # 5. Machine Learning Model Applied
 
