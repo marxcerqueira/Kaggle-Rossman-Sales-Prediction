@@ -36,15 +36,16 @@ The project was developed based on the CRISP-DS (Cross-Industry Standard Process
 ## Table of Contents
 - [Introduction](#introduction)
 - [1. Business Problem](#1-business-problem)
-- [2. Solution Strategy](#2-solution-strategy)
-- [3. Top 3 Data Insights](#3-top-3-data-insights)
-- [4. Machine Learning Model Applied](#4-machine-learning-model-applied)
-- [5. Machine Learning Model Performance](#5-machine-learning-model-performance)
-- [6. Business Results](#7-bussines-results)
-- [7. Conclusion](#8-conclusion)
-- [8. Lessons Learned](#9-lessons-learned)
-- [9. Next Steps to Improve](#10-next-steps-to-improve)
-- [10.References](#references)
+- [2. The Dataset](#2-the-dataset)
+- [3. Solution Strategy](#3-solution-strategy)
+- [4. Top 3 Data Insights](#4-top-3-data-insights)
+- [5. Machine Learning Model Applied](#5-machine-learning-model-applied)
+- [6. Machine Learning Model Performance](#6-machine-learning-model-performance)
+- [7. Business Results](#7-bussines-results)
+- [8. Conclusion](#8-conclusion)
+- [9. Lessons Learned](#9-lessons-learned)
+- [10. Next Steps to Improve](#10-next-steps-to-improve)
+- [11.References](#11-references)
 
 ---
 
@@ -92,7 +93,15 @@ The dataset has 1017209 rows and 17 columns that represets features which explai
 * Promo2Since[Year/Week] - describes the year and calendar week when the store started participating in Promo2
 * PromoInterval - describes the consecutive intervals Promo2 is started, naming the months the promotion is started anew. E.g. "Feb,May,Aug,Nov" means each round starts in February, May, August, November of any given year for that store
 
-# 2. Solution Strategy
+The dataset was split into training and validation sets.
+
+The training dataset represets the sales between **2013-01-01 to 2015-06-19**
+
+The validation dataset represnts the last 6 weeks of sales which corresponde to the date **2015-06-19 to 2015-07-31**
+
+Since we validate our trained model, we can send it to "production", and the managers can access the sales predictions for the next six weeks.
+
+# 3. Solution Strategy
 
 The strategy adopted was the following:
 
@@ -117,13 +126,37 @@ In the next steps, the machine learning models trained by using the features sel
 
 **Step 10. Deploy Model to Production:** The model is deployed on a cloud environment to make possible that other stakeholders and services access its results.
 
-# 3. Top 3 Data Insights
+# 4. Exploratory Data Analysis and Best Insights
+## 4.1 Univariate Analysis
+The histograms below show us the distribution of all the numerical features (old and new features created after feature engineering).
 
-The Mind Map shows the main factors that can contribute to to predict the target variable Sales.
+<img src="/img/feat_histogram.png" height="350" width="500" align="middle">
+
+The mind map below shows us the main factors that can contribute to to predict the target variable Sales.
 Both the mind map and the available data from the dataset will be the basis to create a hypothesis list.
-The hypothesis list serves as the guide for the Exploratory Data Analysis (EDA), which aims to better understand the general data and features properties, as well as to generate business insights.
+The hypothesis list better suit us as a guide for the Exploratory Data Analysis (EDA), which aims to better understand the general data and features properties, and generate business insights as well.
 
-<img src="/img/DAILY_STORE_SALES_HYPOTESES.png" height="350" width="500">
+<img src="/img/DAILY_STORE_SALES_HYPOTESES.png" height="350" width="500" align="middle">
+
+* Highlights: 
+  **All variables don't follow a normal distribution**
+- **day**: There are specific days which has almost double sales data points than others (day)
+- **month**: More sales data points on the first semester
+- **year**: Less data points in 2015 (compared to other years)
+- **customers**: Resemble a poisson distribution.
+- **week_of_year**: A boom of sales data points during the first weeks of the year
+- **day_of_week**: less sales data points on sundays
+- **is_weekday**: more sales data points on weekdays
+- **school_holiday**: more sales data points on regular days
+- **competition_distance**: more sales data points for stores with closer competitors
+- **competition_open_since_month**: more sales data points for competitors which entered competition on April, July, September
+- **competition_since_month**: no relevant info retrieved
+- **is_promo2**: more sales data points for 0
+- **competition_open_since_year, promo2, promo, promo_since, promo_time**: no relevant info retrieved
+
+## 4.2 Bivariate Analysis
+
+Bellow are the assumptions that I created as hypothesis to a better data undestanding and and to generate bussiness insights:
 
 **Hypothesis 01:**
 
@@ -137,7 +170,7 @@ The hypothesis list serves as the guide for the Exploratory Data Analysis (EDA),
 
 **True/False.**
 
-# 4. Machine Learning Model Applied
+# 5. Machine Learning Model Applied
 
 The following machine learning models were trained:
 * Mean of the target variable (baseline) Model;
@@ -148,7 +181,7 @@ The following machine learning models were trained:
 
 All of them were cross-validated
 
-# 5. Machine Learning Model Performance
+# 6. Machine Learning Model Performance
 
 
 The **Random Forest Regressor** and the **XGBoost Regressor** were the best model performers at both cycles, with a Mean Average Percentage Error (MAPE) of 7% and 9%, respectively. Since the XGBoost Regressor is known to train data fastly than random forest algorithms (and the model performance is not too different), **we used the XGBoost regressor as the main machine learning model for the project**.
@@ -163,7 +196,7 @@ Using the optimal set of parameters, we obtained the following results with the 
 which had **a MAPE improvement of ~4.2%.**
 
 
-# 6. Business Results
+# 7. Business Results
 
 Considering all Rossmann stores, we would have **a total predicted sales for the next six weeks of \$284,153,920**, being \$283,772,779 for the worst scenario sales prediction, and \$284,535,044 for the best scenario. Scenarios were created to reflect MAPE variations. 
 
@@ -205,20 +238,20 @@ The machine learning model that predicts sales for Rossmann stores was deployed,
  To access the application, you can add the Telegram Bot @RossmannBot and request predictions.
   
 
-# 7. Conclusions
+# 8. Conclusions
 
 In this project, all necessary steps to deploy a complete Data Science project to production were taken. Using one CRISP-DM project management methodology cycle, a satisfactory model performance was obtained by using the XGBoost algorithm to predict sales revenue for Rossmann stores up to 6 weeks in advance, and useful business information was generated during the exploratory data analysis section. Due to this, the project met the criteria of finding a suitable solution for the company's stakeholders to access sales predictions on a smartphone application.
 
-# 8. Lessons Learned
+# 9. Lessons Learned
 
 * The exploratory data analysis provides important insights to the business problem, many of which contradict the initial hypothesis. This information is valuable for the understanding of business and for planning future actions. This step also provides a preview of the result of the feature selection step.
 * This predict problem was solved by using a Regression adaptaded to Time-Series method
 * The choice of machine learning model used must consider the generalizability of the model, but also the cost of its deployment.
 
 
-# 9. Next Steps to Improve
+# 10. Next Steps to Improve
 
-# 10. References 
+# 11. References 
 1. stores.csv from Kaggle (https://www.kaggle.com/c/rossmann-store-sales/data?select=store.csv)
 2. train.csv from Kaggle (https://www.kaggle.com/c/rossmann-store-sales/data?select=train.csv)
 3. test.csv from Kaggle (https://www.kaggle.com/c/rossmann-store-sales/data?select=test.csv)
