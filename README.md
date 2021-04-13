@@ -168,17 +168,33 @@ The hypothesis list better suit us as a guide for the Exploratory Data Analysis 
 
 Bellow are the assumptions that I created as hypothesis to a better data undestanding and and to generate bussiness insights:
 
-**Hypothesis 01:**
-![](/img/H.png)
-**True/False.**
+**Hypothesis 02: Stores with near competitors sell less**
 
-**Hypothesis 02:**
-![](/img/H.png)
-**True/False.**
+**FALSE** Stores with near competitors sell more.
 
-**Hypothesis 03:**
-![](/img/H.png)
-**True/False.**
+  * In the scatterplot graphic we can see the most part of the data concentrated within the range distance of 0 - 20000 meters;
+  * Barplot show us that the revenue is higher for stores with close competitors
+  * The heatmap show us a negative correlation, telling us the feature is relevant but not so much.
+
+![](/img/H2.png)
+
+**Hypothesis 03: Stores with longer competitors should sell more**
+
+**FALSE** Stores with longer competitors sell less!.
+
+  * The variable competition_since_month tells us since when a Rossmann store has started facing competitors (in months). Note that negative values mean that competition hasn't started yet.
+  * Stores with new competitors sell more.
+
+![](/img/H3.png)
+
+**Hypothesis 12: Stores should sell less during school holidays**
+
+**TRUE** stores sell less during school holidays. Except in August they sell more
+
+  * school_holiday takes values of 0 (if regular day) and 1 (if school holiday);
+  * Stores sell less during school holidays except in August, assuming that school break in Europe influences it.
+
+![](/img/H12.png)
 
 **Hypothesis Summary**:
 
