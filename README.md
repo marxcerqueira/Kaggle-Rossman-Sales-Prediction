@@ -268,11 +268,9 @@ which had **a MAPE improvement of ~4.2%.**
 
 *At the end, Rossmann stakeholders will be able to access predictions with a Telegram Bot on their smartphones.
 
-  Below, the production arthitecture used is this project:
+  Below, the production arthitecture used is this project:3
   
-  &nbsp; 
-      <img width="80%" alt="drawing" src="img/production_chart.PNG">
-  &nbsp; 
+  ![](img/production_chart.png)
 
   The architecture works like this: (1) a user texts the store number it wishes to receive sales prediction to a Telegram Bot; (2) the Rossmann API (rossmann-bot.py) receives the request and retrieve all the data related to that store number from the test dataset; (3) the Rossmann API sends the data to Handler API (handler.py); (4) the Handler API calls the data preparation (Rossmann.py) to shape the raw data and generate predictions using the trained XGBoost model; (5) the API returns the prediction to Rossmann API; (6) the API returns the total sales prediction for a specific store + a graph of sales prediction across the next six weeks to the user on Telegram:
   
