@@ -28,7 +28,7 @@ The project was developed based on the CRISP-DS (Cross-Industry Standard Process
     <img width="50%" alt="drawing" src="https://miro.medium.com/max/700/1*JYbymHifAk7aQ1pHm_IdMQ.png">
   </p>
   &nbsp; 
-
+  
 #### This project was made by Marx Cerqueira.
 
 ---
