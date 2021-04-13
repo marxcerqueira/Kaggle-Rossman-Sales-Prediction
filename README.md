@@ -120,25 +120,25 @@ In the next steps, the machine learning models trained by using the features sel
 
 **Step 07. Machine Learning Modelling:** Some machine learning models were trained. The one that presented best results after cross-validation went through a further stage of hyperparameter fine tunning to optimize the model's generalizability.
 
-**Step 08. Hyperparameter Fine Tunning:**
+**Step 08. Hyperparameter Fine Tunning:** Found the best parameters that maximize the learning iof the model. The best parameters were found by testing a set of parameters iteratively - the set that best suit was the chosen one.
 
-**Step 09. Convert Model Performance to Business Values:**
+**Step 09. Convert Model Performance to Business Values:** In this step the model were analyzed from a business perpective, translating the errors into business values.
 
-**Step 10. Deploy Model to Production:** The model is deployed on a cloud environment to make possible that other stakeholders and services access its results.
+**Step 10. Deploy Model to Production:** The model were deployed on a cloud environment to make possible that other stakeholders and services access its results.
 
 # 4. Exploratory Data Analysis and Best Insights
 ## 4.1 Univariate Analysis
+* Numerical variables:
 The histograms below show us the distribution of all the numerical features (old and new features created after feature engineering).
-
-<img src="/img/feat_histogram.png" height="350" width="500" align="middle">
+![](/img/feat_histogram.png)
 
 The mind map below shows us the main factors that can contribute to to predict the target variable Sales.
 Both the mind map and the available data from the dataset will be the basis to create a hypothesis list.
 The hypothesis list better suit us as a guide for the Exploratory Data Analysis (EDA), which aims to better understand the general data and features properties, and generate business insights as well.
 
-<img src="/img/DAILY_STORE_SALES_HYPOTESES.png" height="350" width="500" align="middle">
+![](/img/DAILY_STORE_SALES_HYPOTESES.png)
 
-* Highlights: 
+In short:
   **All variables don't follow a normal distribution**
 - **day**: There are specific days which has almost double sales data points than others (day)
 - **month**: More sales data points on the first semester
@@ -154,21 +154,68 @@ The hypothesis list better suit us as a guide for the Exploratory Data Analysis 
 - **is_promo2**: more sales data points for 0
 - **competition_open_since_year, promo2, promo, promo_since, promo_time**: no relevant info retrieved
 
+
+* Categorical variables:
+
+![](/img/categorical_variables.png)
+
+In short:
+- state_holiday: more sales data points on public_holidays than other holidays. Easter and Christmas are similar
+- store_type: More sales data points for store_type a. Less stores b
+- assortment: Less sales data points for assortment of type 'extra'
+
 ## 4.2 Bivariate Analysis
 
 Bellow are the assumptions that I created as hypothesis to a better data undestanding and and to generate bussiness insights:
 
-**Hypothesis 01:**
+**Hypothesis 02: Stores with near competitors sell less**
 
-**True/False.**
+**FALSE** Stores with near competitors sell more.
 
-**Hypothesis 02:**
+  * In the scatterplot graphic we can see the most part of the data concentrated within the range distance of 0 - 20000 meters;
+  * Barplot show us that the revenue is higher for stores with close competitors
+  * The heatmap show us a negative correlation, telling us the feature is relevant but not so much.
 
-**True/False.**
+![](/img/H2.png)
 
-**Hypothesis 03:**
+**Hypothesis 03: Stores with longer competitors should sell more**
 
-**True/False.**
+**FALSE** Stores with longer competitors sell less!.
+
+  * The variable competition_since_month tells us since when a Rossmann store has started facing competitors (in months). Note that negative values mean that competition hasn't started yet.
+  * Stores with new competitors sell more.
+
+![](/img/H3.png)
+
+**Hypothesis 12: Stores should sell less during school holidays**
+
+**TRUE** stores sell less during school holidays. Except in August they sell more
+
+  * school_holiday takes values of 0 (if regular day) and 1 (if school holiday);
+  * Stores sell less during school holidays except in August, assuming that school break in Europe influences it.
+
+![](/img/H12.png)
+
+**Hypothesis Summary**:
+
+![](/img/hypothesis_resume.png)
+
+## 4.3 Multivariate Analysis
+
+![](img/multi_analysis_numeric.png)
+
+**1. Target variable & independent variables (predictors)**
+* **Variables with positive correlation with sales**:
+
+  * **Strong**: `customers`
+  * **Medium**: `promo`
+  * **Weak**: `is_weekday`, `promo2_since_year`
+  
+* **Variables with negative correlation with sales**:
+
+  * **Strong**: -
+  * **Medium**: -
+  * **Weak**: `promo2`, `day_of_the_week` 
 
 # 5. Machine Learning Model Applied
 
@@ -183,10 +230,9 @@ All of them were cross-validated
 
 # 6. Machine Learning Model Performance
 
-
 The **Random Forest Regressor** and the **XGBoost Regressor** were the best model performers at both cycles, with a Mean Average Percentage Error (MAPE) of 7% and 9%, respectively. Since the XGBoost Regressor is known to train data fastly than random forest algorithms (and the model performance is not too different), **we used the XGBoost regressor as the main machine learning model for the project**.
 
-<img src="/images/model_performance.png" height="450" width="723"> ## editar
+![](img/models_results_cv.png)
 
 The trained (cross-validated and fine tuned) model was also applied on a dataset of potential customers who did not participate in the initial poll.
 
@@ -198,42 +244,37 @@ which had **a MAPE improvement of ~4.2%.**
 
 # 7. Business Results
 
-Considering all Rossmann stores, we would have **a total predicted sales for the next six weeks of \$284,153,920**, being \$283,772,779 for the worst scenario sales prediction, and \$284,535,044 for the best scenario. Scenarios were created to reflect MAPE variations. 
+* Considering all Rossmann stores, we would have **a total predicted sales for the next six weeks of \$284,153,920**, being \$283,772,779 for the worst scenario sales prediction, and \$284,535,044 for the best scenario. Scenarios were created to reflect MAPE variations. 
 
-- The XGBoost model performed quite well across Rossmann stores except for three stores with MAPE above 14%:
+  - The XGBoost model performed quite well in Rossmann stores except for three stores with MAPE above 14%:
 
-![](img/worst_stores_1.PNG)
+![](img/worst_best_scenarios.PNG)
 
-![](img/worst_stores.PNG)
+![](img/total_performance_table.PNG)
 
-Usually, the business has the final word on how permissible these error percentages can be. However, the model performs fairly well for most of the stores with a MAPE of ~5%. Since we have created a business case for this project, we will fictionally consider that the business has approved the model predictions.
+* Usually, the business has the final word on how permissible these error percentages can be. However, the model performs fairly well for most of the stores with a MAPE of ~5%. Since we have created a business case for this project, we will fictionally consider that the business has approved the model predictions.
 
-The line plot below shows that predictions (in orange) were fairly on par with the observed sales values (in blue) across the last six weeks of sales represented by the validation data. 
+*The line plot below shows that predictions (in orange) were fairly on par with the observed sales values (in blue) across the last six weeks of sales represented by the validation data. 
 
-![](img/performance1.png)
+*The following graph shows the error rate (the ratio between prediction values and observed values) across six weeks of sales. **The model performs fairly well since it doesn't achieve higher error rates.** The 3rd and 5th weeks were the ones that the model performed not so well compared to other weeks:
 
-The following graph shows the error rate (the ratio between prediction values and observed values) across six weeks of sales. **The model performs fairly well since it doesn't achieve higher error rates.** The 3rd and 5th weeks were the ones that the model performed not so well compared to other weeks:
+*One of the premises for a good machine learning model is to have a normal-shaped distribution of residuals with mean zero. In the following graph, we can observe that the **errors are centered around zero, and its distribution resembles a normal, bell-shaped curve.**
 
-![](img/performance2.png)
+*The following graph is a scatterplot with predictions plotted against the error for each sales day. Ideally, we would have all data points concentrated within a "tube" since it represents low error variance across all values that sales prediction can assume:
 
-One of the premises for a good machine learning model is to have a normal-shaped distribution of residuals with mean zero. In the following graph, we can observe that the **errors are centered around zero, and its distribution resembles a normal, bell-shaped curve.**
+![](img/ML_model_performance.png)
 
-![](img/performance3.png)
+*The machine learning model that predicts sales for Rossmann stores was deployed, and put it into production using Heroku's plataform, a PaaS that enables developers to build, run, and operate applications entirely in the cloud.
 
-The following graph is a scatterplot with predictions plotted against the error for each sales day. Ideally, we would have all data points concentrated within a "tube" since it represents low error variance across all values that sales prediction can assume:
+*At the end, Rossmann stakeholders will be able to access predictions with a Telegram Bot on their smartphones.
 
-![](img/performance4.png)
-
-The machine learning model that predicts sales for Rossmann stores was deployed, and put it into production in the cloud with Heroku. By the end, Rossmann stakeholders will be able to access predictions with a Telegram Bot on their smartphones.
-
-  The production architecture for this project is as follows:
+  Below, the production arthitecture used is this project:
+  
   &nbsp; 
-      <img width="80%" alt="drawing" src="img/architecture_2.PNG">
+      <img width="80%" alt="drawing" src="img/production_chart.PNG">
   &nbsp; 
 
   The architecture works like this: (1) a user texts the store number it wishes to receive sales prediction to a Telegram Bot; (2) the Rossmann API (rossmann-bot.py) receives the request and retrieve all the data related to that store number from the test dataset; (3) the Rossmann API sends the data to Handler API (handler.py); (4) the Handler API calls the data preparation (Rossmann.py) to shape the raw data and generate predictions using the trained XGBoost model; (5) the API returns the prediction to Rossmann API; (6) the API returns the total sales prediction for a specific store + a graph of sales prediction across the next six weeks to the user on Telegram:
-  
-  editar
   
  To access the application, you can add the Telegram Bot @RossmannBot and request predictions.
   
