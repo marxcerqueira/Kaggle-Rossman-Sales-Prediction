@@ -120,14 +120,15 @@ In the next steps, the machine learning models trained by using the features sel
 
 **Step 07. Machine Learning Modelling:** Some machine learning models were trained. The one that presented best results after cross-validation went through a further stage of hyperparameter fine tunning to optimize the model's generalizability.
 
-**Step 08. Hyperparameter Fine Tunning:**
+**Step 08. Hyperparameter Fine Tunning:** Found the best parameters that maximize the learning iof the model. The best parameters were found by testing a set of parameters iteratively - the set that best suit was the chosen one.
 
-**Step 09. Convert Model Performance to Business Values:**
+**Step 09. Convert Model Performance to Business Values:** In this step the model were analyzed from a business perpective, translating the errors into business values.
 
-**Step 10. Deploy Model to Production:** The model is deployed on a cloud environment to make possible that other stakeholders and services access its results.
+**Step 10. Deploy Model to Production:** The model were deployed on a cloud environment to make possible that other stakeholders and services access its results.
 
 # 4. Exploratory Data Analysis and Best Insights
 ## 4.1 Univariate Analysis
+* Numerical variables:
 The histograms below show us the distribution of all the numerical features (old and new features created after feature engineering).
 ![](/img/feat_histogram.png)
 
@@ -137,7 +138,7 @@ The hypothesis list better suit us as a guide for the Exploratory Data Analysis 
 
 ![](/img/DAILY_STORE_SALES_HYPOTESES.png)
 
-* Highlights: 
+* In short:
   **All variables don't follow a normal distribution**
 - **day**: There are specific days which has almost double sales data points than others (day)
 - **month**: More sales data points on the first semester
@@ -153,20 +154,30 @@ The hypothesis list better suit us as a guide for the Exploratory Data Analysis 
 - **is_promo2**: more sales data points for 0
 - **competition_open_since_year, promo2, promo, promo_since, promo_time**: no relevant info retrieved
 
+
+* Categorical variables:
+
+![](/img/categorical_variables.png)
+
+* In short:
+- state_holiday: more sales data points on public_holidays than other holidays. Easter and Christmas are similar
+- store_type: More sales data points for store_type a. Less stores b
+- assortment: Less sales data points for assortment of type 'extra'
+
 ## 4.2 Bivariate Analysis
 
 Bellow are the assumptions that I created as hypothesis to a better data undestanding and and to generate bussiness insights:
 
 **Hypothesis 01:**
-
+![](/img/H.png)
 **True/False.**
 
 **Hypothesis 02:**
-
+![](/img/H.png)
 **True/False.**
 
 **Hypothesis 03:**
-
+![](/img/H.png)
 **True/False.**
 
 **Hypothesis Summary**:
@@ -186,15 +197,14 @@ All of them were cross-validated
 
 # 6. Machine Learning Model Performance
 
-
 The **Random Forest Regressor** and the **XGBoost Regressor** were the best model performers at both cycles, with a Mean Average Percentage Error (MAPE) of 7% and 9%, respectively. Since the XGBoost Regressor is known to train data fastly than random forest algorithms (and the model performance is not too different), **we used the XGBoost regressor as the main machine learning model for the project**.
 
-<img src="/images/model_performance.png" height="450" width="723"> ## editar
+<img src="/images/model_performance.png" height="450" width="723"> ## tabela xgboost 
 
 The trained (cross-validated and fine tuned) model was also applied on a dataset of potential customers who did not participate in the initial poll.
 
 Using the optimal set of parameters, we obtained the following results with the XGBoost model:
-![](img/xgb_tuned.png)
+![](img/xgb_tuned.png) # tabela tunned
 
 which had **a MAPE improvement of ~4.2%.**
 
