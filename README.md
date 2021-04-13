@@ -38,10 +38,10 @@ The project was developed based on the CRISP-DS (Cross-Industry Standard Process
 - [1. Business Problem](#1-business-problem)
 - [2. The Dataset](#2-the-dataset)
 - [3. Solution Strategy](#3-solution-strategy)
-- [4. Top 3 Data Insights](#4-top-3-data-insights)
+- [4. Exploratory Data Analysis and Best Insights](#4-exploratory-data-analysis-and-best-insights)
 - [5. Machine Learning Model Applied](#5-machine-learning-model-applied)
 - [6. Machine Learning Model Performance](#6-machine-learning-model-performance)
-- [7. Business Results](#7-bussines-results)
+- [7. Business Results](#7-business-results)
 - [8. Conclusion](#8-conclusion)
 - [9. Lessons Learned](#9-lessons-learned)
 - [10. Next Steps to Improve](#10-next-steps-to-improve)
@@ -277,7 +277,7 @@ which had **a MAPE improvement of ~4.2%.**
  To access the application, you can add the Telegram Bot @RossmannBot and request predictions.
   
 
-# 8. Conclusions
+# 8. Conclusion
 
 In this project, all necessary steps to deploy a complete Data Science project to production were taken. Using one CRISP-DM project management methodology cycle, a satisfactory model performance was obtained by using the XGBoost algorithm to predict sales revenue for Rossmann stores up to 6 weeks in advance, and useful business information was generated during the exploratory data analysis section. Due to this, the project met the criteria of finding a suitable solution for the company's stakeholders to access sales predictions on a smartphone application.
 
