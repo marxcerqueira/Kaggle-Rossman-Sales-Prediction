@@ -230,7 +230,7 @@ All of them were cross-validated
 
 # 6. Machine Learning Model Performance
 
-The **Random Forest Regressor** and the **XGBoost Regressor** were the best model performers at both cycles, with a Mean Average Percentage Error (MAPE) of 7% and 9%, respectively. Since the XGBoost Regressor is known to train data fastly than random forest algorithms (and the model performance is not too different), **we used the XGBoost regressor as the main machine learning model for the project**.
+The **Random Forest Regressor** was the model that performed best, with a Mean Average Percentage Error (MAPE) of 12%. However, since the XGBoost Regressor is known to train data fastly than random forest algorithms, **I decided to use the XGBoost regressor as the main machine learning model for the project** and after crossvalidation it performed the best over the **Random Forest Regressor**.
 
 ![](img/models_results_cv.png)
 
@@ -239,43 +239,43 @@ The trained (cross-validated and fine tuned) model was also applied on a dataset
 Using the optimal set of parameters, we obtained the following results with the XGBoost model:
 ![](img/xgb_tuned.png)
 
-which had **a MAPE improvement of ~4.2%.**
-
+which had **a MAPE error of ~9.3%.**
 
 # 7. Business Results
 
-* Considering all Rossmann stores, we would have **a total predicted sales for the next six weeks of \$284,153,920**, being \$283,772,779 for the worst scenario sales prediction, and \$284,535,044 for the best scenario. Scenarios were created to reflect MAPE variations. 
-
-  - The XGBoost model performed quite well in Rossmann stores except for three stores with MAPE above 14%:
-
-![](img/worst_best_scenarios.PNG)
+* Considering all Rossmann stores, we would have **a total predicted sales for the next six weeks of \$284,483,712.00**, being \$283,765,866.25 for the worst scenario sales prediction, and \$285,201,558.12 for the best scenario. Scenarios were created to reflect MAPE variations.
 
 ![](img/total_performance_table.PNG)
 
-* Usually, the business has the final word on how permissible these error percentages can be. However, the model performs fairly well for most of the stores with a MAPE of ~5%. Since we have created a business case for this project, we will fictionally consider that the business has approved the model predictions.
+* The XGBoost model performed well in Rossmann stores except for a couple of stores with MAPE above 20%, as we can see in the scatterplot bellow:
 
-*The line plot below shows that predictions (in orange) were fairly on par with the observed sales values (in blue) across the last six weeks of sales represented by the validation data. 
+![](img/wost-best-scenarios.PNG)
 
-*The following graph shows the error rate (the ratio between prediction values and observed values) across six weeks of sales. **The model performs fairly well since it doesn't achieve higher error rates.** The 3rd and 5th weeks were the ones that the model performed not so well compared to other weeks:
+![](img/scatterplot_worst_scene.PNG)
 
-*One of the premises for a good machine learning model is to have a normal-shaped distribution of residuals with mean zero. In the following graph, we can observe that the **errors are centered around zero, and its distribution resembles a normal, bell-shaped curve.**
+* Usually, the business has the final word on how permissible these error percentages can be. However, the model performs fairly well for most of the stores with a MAPE error less than ~10%. So we assumed that was a ok error and we could proceed with the CRISP cicle.
 
-*The following graph is a scatterplot with predictions plotted against the error for each sales day. Ideally, we would have all data points concentrated within a "tube" since it represents low error variance across all values that sales prediction can assume:
+* The line plot below shows that predictions (in orange) follows the observed sales values (in blue) across the last six weeks of sales represented by the validation data. 
+
+* The following graph shows the error rate (the ratio between prediction values and observed values) across six weeks of sales. **The model performs fairly well since it doesn't achieve higher error rates.** The 3rd and 5th weeks were the ones that the model performed not so well compared to other weeks:
+
+* One of the premises for a good machine learning model is to have a normal-shaped distribution of residuals with mean zero. In the following graph, we can observe that the **errors are centered around zero, and its distribution resembles a normal, bell-shaped curve.**
+
+* The following graph is a scatterplot with predictions plotted against the error for each sales day. Ideally, we would have all data points concentrated within a "tube" since it represents low error variance across all values that sales prediction can assume:
 
 ![](img/ML_model_performance.png)
 
-*The machine learning model that predicts sales for Rossmann stores was deployed, and put it into production using Heroku's plataform, a PaaS that enables developers to build, run, and operate applications entirely in the cloud.
+* The machine learning model that predicts sales for Rossmann stores was deployed, and put it into production using Heroku's plataform, a PaaS that enables developers to build, run, and operate applications entirely in the cloud.
 
-*At the end, Rossmann stakeholders will be able to access predictions with a Telegram Bot on their smartphones.
+* At the end, Rossmann stakeholders will be able to access predictions with a Telegram Bot on their smartphones.
 
-  Below, the production arthitecture used is this project:3
+  Below, the production arthitecture used is this project:
   
   ![](img/production_chart.png)
 
   The architecture works like this: (1) a user texts the store number it wishes to receive sales prediction to a Telegram Bot; (2) the Rossmann API (rossmann-bot.py) receives the request and retrieve all the data related to that store number from the test dataset; (3) the Rossmann API sends the data to Handler API (handler.py); (4) the Handler API calls the data preparation (Rossmann.py) to shape the raw data and generate predictions using the trained XGBoost model; (5) the API returns the prediction to Rossmann API; (6) the API returns the total sales prediction for a specific store + a graph of sales prediction across the next six weeks to the user on Telegram:
   
  To access the application, you can add the Telegram Bot @RossmannBot and request predictions.
-  
 
 # 8. Conclusion
 
@@ -290,10 +290,15 @@ In this project, all necessary steps to deploy a complete Data Science project t
 
 # 10. Next Steps to Improve
 
+* In the next cycle of CRISP, we shoud create specific models for stores that were more difficult to make predictions;
+* Better understand such stores;
+* Try to create new features for these stores.
+
 # 11. References 
 1. stores.csv from Kaggle (https://www.kaggle.com/c/rossmann-store-sales/data?select=store.csv)
 2. train.csv from Kaggle (https://www.kaggle.com/c/rossmann-store-sales/data?select=train.csv)
 3. test.csv from Kaggle (https://www.kaggle.com/c/rossmann-store-sales/data?select=test.csv)
+4. Telegram API documentation (https://core.telegram.org/)
 
 # LICENSE
 MIT LICENSE
