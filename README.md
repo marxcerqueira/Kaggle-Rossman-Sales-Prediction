@@ -15,13 +15,14 @@ The goal of this Readme is to show the context of the problem, the steps taken t
 
 The project was developed based on the CRISP-DS (Cross-Industry Standard Process - Data Science, a.k.a. CRISP-DM) project management method, with the following steps:
 
-- Business Understanding
-- Data Collection
-- Data Cleaning
-- Exploratory Data Analysis (EDA)
-- Data Preparation
-- Machine Learning Modelling and fine-tuning
-- Model and Business performance evaluation / Results
+- Business Understanding;
+- Data Collection;
+- Data Cleaning;
+- Exploratory Data Analysis (EDA);
+- Data Preparation;
+- Machine Learning Modelling and fine-tuning;
+- Model and Business performance evaluation / Results;
+- Model deployment.
 
 &nbsp; 
   <p align="center">
@@ -255,13 +256,13 @@ which had **a MAPE error of ~9.3%.**
 
 * Usually, the business has the final word on how permissible these error percentages can be. However, the model performs fairly well for most of the stores with a MAPE error less than ~10%. So we assumed that was a ok error and we could proceed with the CRISP cicle.
 
-* The line plot below shows that predictions (in orange) follows the observed sales values (in blue) across the last six weeks of sales represented by the validation data. 
+The first graph below shows us the predictions (orage line) which follows the sales values (blue line) over the last six weeks of sales, meaning that the model predicted well the sales, so it is following a good pattern.
 
-* The following graph shows the error rate (the ratio between prediction values and observed values) across six weeks of sales. **The model performs fairly well since it doesn't achieve higher error rates.** The 3rd and 5th weeks were the ones that the model performed not so well compared to other weeks:
+The second graph shows us the error rate against the sales. The error rate is the ratio between prediction values and observed values. Since the model doesn't have high rates, it performed quite well.
 
-* One of the premises for a good machine learning model is to have a normal-shaped distribution of residuals with mean zero. In the following graph, we can observe that the **errors are centered around zero, and its distribution resembles a normal, bell-shaped curve.**
+One of the premises for a good machine learning model is to have a normal-shaped distribution of residuals with mean zero. In the third graph, we can observe that the **errors are centered around zero, and its distribution resembles a normal, bell-shaped curve.**
 
-* The following graph is a scatterplot with predictions plotted against the error for each sales day. Ideally, we would have all data points concentrated within a "tube" since it represents low error variance across all values that sales prediction can assume:
+The last graph is a scatterplot with predictions plotted against the error for each sales day. Ideally, we would have all data points concentrated within a "tube" since it represents low error variance across all values that sales prediction can assume:
 
 ![](img/ML_model_performance.png)
 
@@ -272,8 +273,14 @@ which had **a MAPE error of ~9.3%.**
   Below, the production arthitecture used is this project:
   
   ![](img/production_chart.png)
-
-  The architecture works like this: (1) a user texts the store number it wishes to receive sales prediction to a Telegram Bot; (2) the Rossmann API (rossmann-bot.py) receives the request and retrieve all the data related to that store number from the test dataset; (3) the Rossmann API sends the data to Handler API (handler.py); (4) the Handler API calls the data preparation (Rossmann.py) to shape the raw data and generate predictions using the trained XGBoost model; (5) the API returns the prediction to Rossmann API; (6) the API returns the total sales prediction for a specific store + a graph of sales prediction across the next six weeks to the user on Telegram:
+  
+  **How does it works?**
+  1. A user send a text to a Telegram Bot with a store number it intends to receive the sales prediction;
+  2. The Rossmann API (rossmann-bot.py) receives the request and access all the data related to this store from the test data;
+  3. The Rossmann API sends the data to the Handler API (handler.py);
+  4. The Handler API calls the data preparation class (Rossmann.py) to proccess the raw data and use the trained XGBoost model and return its prediction to Rossmann API;
+  5. The API returns the total sales prediction for the next six weeks of the store.
+  6. 
   
  To access the application, you can add the Telegram Bot @RossmannBot and request predictions.
 
