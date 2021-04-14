@@ -34,7 +34,7 @@ The project was developed based on the CRISP-DS (Cross-Industry Standard Process
 
 ---
 
-## Table of Contents
+## Summary
 - [Introduction](#introduction)
 - [1. Business Problem](#1-business-problem)
 - [2. The Dataset](#2-the-dataset)
@@ -280,7 +280,10 @@ The last graph is a scatterplot with predictions plotted against the error for e
   3. The Rossmann API sends the data to the Handler API (handler.py);
   4. The Handler API calls the data preparation class (Rossmann.py) to proccess the raw data and use the trained XGBoost model and return its prediction to Rossmann API;
   5. The API returns the total sales prediction for the next six weeks of the store.
-  6. 
+
+  &nbsp; 
+  <p align="center"><img width="40%" alt="drawing" src="img/telegram_rossmann.gif"></p>
+  &nbsp;
   
  To access the application, you can add the Telegram Bot @RossmannBot and request predictions.
 
