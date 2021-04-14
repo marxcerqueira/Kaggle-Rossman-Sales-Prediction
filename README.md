@@ -6,7 +6,9 @@
 
 An end-to-end Data Science project with a regression adapted for time series as solution was created four machine learning models to forecast the sales. Predictions can be accessed by users through a bot from the smartphone app Telegram.
 
-<img src="https://ldrumbru.sirv.com/telegram_rossmann.gif" width="464" height="848" alt="" />
+  &nbsp; 
+  <p align="center"><img width="40%" alt="drawing" src="img/telegram_rossmann.gif"></p>
+  &nbsp;
 
 This repository contains the solution for a Kaggle competition problem: https://www.kaggle.com/c/rossmann-store-sales
 
