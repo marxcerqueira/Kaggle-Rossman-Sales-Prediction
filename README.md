@@ -245,13 +245,13 @@ which had **a MAPE error of ~9.3%.**
 
 * Considering all Rossmann stores, we would have **a total predicted sales for the next six weeks of \$284,483,712.00**, being \$283,765,866.25 for the worst scenario sales prediction, and \$285,201,558.12 for the best scenario. Scenarios were created to reflect MAPE variations.
 
-![](img/total_performance_table.PNG)
+![](img/total_performance_table.png)
 
 * The XGBoost model performed well in Rossmann stores except for a couple of stores with MAPE above 20%, as we can see in the scatterplot bellow:
 
-![](img/wost-best-scenarios.PNG)
+![](img/wost-best-scenarios.png)
 
-![](img/scatterplot_worst_scene.PNG)
+![](img/scatterplot_worst_scene.png)
 
 * Usually, the business has the final word on how permissible these error percentages can be. However, the model performs fairly well for most of the stores with a MAPE error less than ~10%. So we assumed that was a ok error and we could proceed with the CRISP cicle.
 
