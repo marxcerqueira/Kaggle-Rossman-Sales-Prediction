@@ -34,7 +34,7 @@ The project was developed based on the CRISP-DS (Cross-Industry Standard Process
 
 ---
 
-## Summary
+## Contents
 - [Introduction](#introduction)
 - [1. Business Problem](#1-business-problem)
 - [2. The Dataset](#2-the-dataset)
