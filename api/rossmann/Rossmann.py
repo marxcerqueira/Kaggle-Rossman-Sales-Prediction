@@ -7,7 +7,7 @@ import inflection
 
 class Rossmann(object): # a classe rossman recebe um objeto. Iremos colocar todas limpezas, transformações, encondings
     def __init__(self): 
-        self.home_path                     = 'C:/Users/marxv/Documents/DataScience/Data-Science-Projects/Kaggle-Rossman-Sales-Prediction/'
+        self.home_path                     = '/home/marxcerqueira/repos/Data-Science-Projects/Kaggle-Rossman-Sales-Prediction/'
         self.competition_distante_scaler   = pickle.load(open(self.home_path + 'parameters/competition_distance_scaler.pkl', 'rb'))
         self.competition_time_month_scaler = pickle.load(open(self.home_path + 'parameters/competition_time_month_scaler.pkl', 'rb'))
         self.promo_time_week_scaler        = pickle.load(open(self.home_path + 'parameters/promo_time_week_scaler.pkl', 'rb'))
