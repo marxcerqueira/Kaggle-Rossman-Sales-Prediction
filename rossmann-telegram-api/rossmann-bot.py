@@ -9,27 +9,28 @@ from flask import Flask, request, Response
 from io import BytesIO
 
 # constants
-TOKEN = '1772058988:AAEy1JExctBfpdXfA9E6AtfP_VG_zmSuvyQ'
+TOKEN  = '1772058988:AAEy1JExctBfpdXfA9E6AtfP_VG_zmSuvyQ'
+TOKEN2 = '1970888326:AAGojEWanr2-RQb3hYHaGwIxfmidi3qoGoU'
 
 # # info about the Bot
-# https://api.telegram.org/bot1772058988:AAEy1JExctBfpdXfA9E6AtfP_VG_zmSuvyQ/getMe
+# https://api.telegram.org/bot1970888326:AAGojEWanr2-RQb3hYHaGwIxfmidi3qoGoU/getMe
 
 # # get updates
-# https://api.telegram.org/bot1772058988:AAEy1JExctBfpdXfA9E6AtfP_VG_zmSuvyQ/getUpdates
+# https://api.telegram.org/bot1970888326:AAGojEWanr2-RQb3hYHaGwIxfmidi3qoGoU/getUpdates
 
 # # Webhook
-# https://api.telegram.org/bot1772058988:AAEy1JExctBfpdXfA9E6AtfP_VG_zmSuvyQ/setWebhook?url=https://431c9427f9233d.localhost.run/
+# https://api.telegram.org/bot1970888326:AAGojEWanr2-RQb3hYHaGwIxfmidi3qoGoU/setWebhook?url=https://cc0a2c7a371f9b.localhost.run/
 
 # # Webhook Heroku
-# https://api.telegram.org/bot1772058988:AAEy1JExctBfpdXfA9E6AtfP_VG_zmSuvyQ/setWebhook?url=https://git.heroku.com/rossman-bot-telegram.git/
+# https://api.telegram.org/bot1772058988:AAEy1JExctBfpdXfA9E6AtfP_VG_zmSuvyQ/setWebhook?url=https://rossman-bot-telegram.herokuapp.com/
 
 
 # # send message
-# https://api.telegram.org/bot1772058988:AAEy1JExctBfpdXfA9E6AtfP_VG_zmSuvyQ/sendMessage?chat_id=669387603&text=Hi Marx, I am doing good, tks!
+# https://api.telegram.org/bot1970888326:AAGojEWanr2-RQb3hYHaGwIxfmidi3qoGoU/sendMessage?chat_id=669387603&text=Hi Marx, I am doing good, tks!
 # 669387603
 
 def send_message(chat_id, text):
-    url = 'https://api.telegram.org/bot{}/'.format( TOKEN )
+    url = 'https://api.telegram.org/bot{}/'.format( TOKEN2 )
     url = url + 'sendMessage?chat_id={}'.format(chat_id)
     
     r = requests.post(url, json = {'text': text})
